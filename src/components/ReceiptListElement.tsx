@@ -1,25 +1,19 @@
-"use client"
-
 import { Button,Paper } from'@mui/material'
+import Link from 'next/link';
 import React from 'react';
 
 
-export default function ReceiptListElement({ name,description }: {
+export default function ReceiptListElement({id, name,description }: {
+    id: Number
     name:  String
     description: String
 }){
 
     return (
         <div className='my-5'>
-            <Paper><div>Rezept {name}</div><div>{description}</div><Button color="primary" onClick={() => navigateTo(name)}>Details</Button></Paper>
+            <Paper><div>{name}</div><div>{description}</div><Link passHref href = {`/recipe/${id}`} ><Button color="primary">Details anzeigen</Button></Link></Paper>
         </div>
-        
     )
-
-
-    function navigateTo(id :String){
-        console.log(id);    
-    }
 }
 
 
