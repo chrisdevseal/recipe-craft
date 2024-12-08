@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model favorites {
+  uid      String  @id(map: "favorites_pk") @db.VarChar
+  user_uid String? @db.VarChar
+}
+
+model recipe {
+  uid              String  @id(map: "recipe_pk") @db.VarChar
+  name             String? @db.VarChar
+  description      String? @db.VarChar
+  shortdescription String? @db.VarChar
+}
+
+model users {
+  uid          String  @id(map: "users_pk") @db.VarChar
+  username     String? @db.VarChar
+  passwordhash String? @db.VarChar
+  firstname    String? @db.VarChar
+  lastname     String? @db.VarChar
+}
